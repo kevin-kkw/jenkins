@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+  jenkins:
+    container_name: kevin-jenkins
+    build: ./
+    image: kevin:jenkins
+    restart: always
+    ports:
+      - "${HOST_WWW}:8080"
+      - "${HOST_OTHER}:50000"
+    volumes:
+      - ${HOST_JENKINS_DATA}:/var/lib/jenkins
+      - ${HOST_DOCKER}:/var/run/docker.sock
+     
